@@ -2,11 +2,11 @@ import enchant
 
 from flask import session
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError
+from wtforms import StringField, SubmitField, ValidationError
 from wtforms.validators import DataRequired
 
 
-def my_word_check(form, field):
+def my_word_check(_, field):
     d = enchant.Dict("en_US")
     if not d.check(field.data):
         raise ValidationError("I don't know that word. Please choose another.")
@@ -17,3 +17,13 @@ def my_word_check(form, field):
 class WordForm(FlaskForm):
     word = StringField('Your word', validators=[DataRequired(), my_word_check])
     submit = SubmitField('Submit word')
+
+
+def my_gratitude_check(_, field):
+    if session['word'] not in field.data:
+        raise ValidationError(f"You didn't use the word '{session['word']}'. Try again.")
+
+
+class GratitudeForm(FlaskForm):
+    gratitude = StringField('Your response', validators=[DataRequired(), my_gratitude_check])
+    submit = SubmitField('Submit gratitude')
