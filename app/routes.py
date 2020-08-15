@@ -15,9 +15,7 @@ def random_letter() -> str:
 @app.route('/')
 @app.route('/index')
 def index():
-    response = '<p>Hello world</p>' \
-               '<a href="/letter">Click here to go to the next page.</a>'
-    return response
+    return render_template('hello.html')
 
 
 @app.route('/letter', methods=['GET', 'POST'])
