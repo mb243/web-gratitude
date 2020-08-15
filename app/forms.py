@@ -12,7 +12,7 @@ def my_word_check(_, field):
     d = enchant.Dict("en_US")
     if not d.check(field.data):
         raise ValidationError("I don't know that word. Please choose another.")
-    if session['letter'] != field.data[0]:
+    if session['letter'] != field.data[0].lower():
         raise ValidationError(f"I don't think '{field.data}' starts with the letter '{session['letter']}'. Try again.")
 
 

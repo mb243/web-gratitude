@@ -25,7 +25,7 @@ def letter() -> str:
     form = WordForm()
     if request.method == 'POST':
         if form.validate():
-            session['word'] = form.word.data
+            session['word'] = form.word.data.lower()
             return redirect(url_for('gratitude'))
     return render_template(
         'letter.html',
