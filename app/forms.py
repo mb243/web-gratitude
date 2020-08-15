@@ -5,6 +5,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, ValidationError
 from wtforms.validators import DataRequired
 
+from nltk.stem import PorterStemmer
+
 
 def my_word_check(_, field):
     d = enchant.Dict("en_US")
@@ -20,7 +22,8 @@ class WordForm(FlaskForm):
 
 
 def my_gratitude_check(_, field):
-    if session['word'] not in field.data:
+    ps = PorterStemmer()
+    if ps.stem(session['word']) not in field.data:
         raise ValidationError(f"You didn't use the word '{session['word']}'. Try again.")
 
 
