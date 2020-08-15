@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p>
-        Your letter: {{ letter }}
-    </p>
+<p>
+    A random letter has been chosen for you. That letter is: {{ letter }}
+</p>
+<p>
+    Think of a word that starts with that letter, type it in the box below, and submit.
+</p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
