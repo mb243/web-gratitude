@@ -1,3 +1,41 @@
-body {
-    background-color: lightblue;
+@media screen and (prefers-color-scheme: light) {
+	body {
+		background-color: #f5f2d0;
+		color: black;
+	}
+	a:link { /* a normal, unvisited link */
+		color: #406098;
+		text-decoration: none;
+	}
+	a:visited { /* a link the user has visited */
+		color: #9932cc;
+		text-decoration: none;
+	}
+	a:active { /* a link the moment it is clicked */
+		color: #ff0000;
+		text-decoration: none;
+	}
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	body {
+		background-color: #121212;
+		color: #ffffff;
+	}
+	a:link { /* a normal, unvisited link */
+		color: #03dac6;
+		text-decoration: none;
+	}
+	a:visited { /* a link the user has visited */
+		color: #bb867c;
+		text-decoration: none;
+	}
+	a:hover { /* a link when the user mouses over it */
+		color: #acdbdf;
+		text-decoration: none;
+	}
+	a:active { /* a link the moment it is clicked */
+		color: #f0ece2;
+		text-decoration: none;
+	}
 }
