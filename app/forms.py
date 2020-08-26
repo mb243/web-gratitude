@@ -18,15 +18,15 @@ def my_word_check(_, field):
 
 class WordForm(FlaskForm):
     word = StringField('Your word', validators=[DataRequired(), my_word_check])
-    submit = SubmitField('Submit word')
+    submit = SubmitField('Submit')
 
 
 def my_gratitude_check(_, field):
     ps = PorterStemmer()
     if ps.stem(session['word']) not in field.data:
-        raise ValidationError(f"You didn't use the word '{session['word']}'. Try again.")
+        raise ValidationError(f"I don't think you used a work like '{session['word']}'. Try again.")
 
 
 class GratitudeForm(FlaskForm):
     gratitude = StringField('Your response', validators=[DataRequired(), my_gratitude_check])
-    submit = SubmitField('Submit gratitude')
+    submit = SubmitField('Submit')
