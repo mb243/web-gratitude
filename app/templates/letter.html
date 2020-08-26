@@ -2,11 +2,10 @@
 
 {% block content %}
 <p>
-    A random letter has been chosen for you.<br/>
-    That letter is: {{ letter }}
+    The letter '{{ letter }}' was chosen at random.
 </p>
 <p>
-    Think of a word that starts with that letter, type it in the box below, and submit.
+    Think of a word that starts with that letter, type it in the box below, and submit your word.
 </p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
